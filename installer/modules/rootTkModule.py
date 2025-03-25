@@ -15,7 +15,6 @@ def set_args(argument = None):
     return True
 
 root = tk.Tk()
-root.withdraw()
 
 print('TCL Library:', root.tk.exprstring('$tcl_library'))
 print('Tk Library:',root.tk.exprstring('$tk_library'))
