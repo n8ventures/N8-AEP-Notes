@@ -42,14 +42,24 @@ print('TkVersion: ', tk.TkVersion)
 bundle_path = is_running_from_bundle()
 
 icon = None
+license_file = None
 
-if any(char.isalpha() for char in __version__):
-    if win:
-        icon = os.path.join(bundle_path or '', 'icon.ico') if bundle_path else '.icons/icon.ico'
-    elif mac:
-        icon = os.path.join(bundle_path or '', 'icon.png') if bundle_path else './buildandsign/ico/ico3beta.png'
+icon_png = os.path.join(bundle_path or '', 'icon.png') if bundle_path else './icons/icon.png'
+
+if win:
+    icon = os.path.join(bundle_path or '', 'icon.ico') if bundle_path else './icons/icon.ico'
+elif mac:
+    icon = icon_png
+
+
+
+if bundle_path:
+    license_path = os.path.join(bundle_path, "LICENSE")
 else:
-    if win:
-        icon = os.path.join(bundle_path or '', 'icon.ico') if bundle_path else 'icon/icon.ico'
-    elif mac:
-        icon = os.path.join(bundle_path or '', 'icon.png') if bundle_path else './icon/icon.png'
+    license_path = "../LICENSE"
+
+    license_file = open(license_path).read() if os.path.exists(license_path) else "License file not found."
+
+print("License file path:", license_path)
+print("File exists:", os.path.exists(license_path))
+print("Absolute path", os.path.abspath(license_path))
