@@ -1,14 +1,11 @@
 from tkinter import ttk
 import tkinter as tk
-import os
-from idlelib.tooltip import Hovertip
-import sys
 import emoji
 
 from modules.platformModules import win, mac
 from modules.PopupModules import create_popup
 from modules.TkModules import make_non_resizable, Button, clickable_link_labels
-from installer.modules.rootTkModule import root
+from modules.rootTkModule import root
 
 from __version__ import __author__,  __version__
 
@@ -61,7 +58,7 @@ def watermark_label(parent_window, debug = ''):
 
     menu_bar.add_cascade(label="More", menu=about_menu)
 
-    from installer.modules.rootTkModule import sv_ttk, darkdetect
+    from modules.rootTkModule import sv_ttk, darkdetect
     is_dark = True if darkdetect.theme() == "Dark" else False
 
     def toggle_theme():
